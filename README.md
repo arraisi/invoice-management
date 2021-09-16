@@ -18,3 +18,22 @@ Diantara metode pembayaran yang akan disupport antara lain :
 
   * QRIS
 
+
+# Setup Database #
+
+1. Run postgresql on docker
+ 
+  ```
+  docker run --rm \
+    --name invoice-db \
+    -e POSTGRES_DB=invoicedb \
+    -e POSTGRES_USER=invoice \
+    -e POSTGRES_PASSWORD=MGv5vumHqQvhWdKQoCHW \
+    -e PGDATA=/var/lib/postgresql/data/pgdata \
+    -v "$PWD/invoicedb-data:/var/lib/postgresql/data" \
+    -p 5432:5432 \
+    postgres:13  
+  ```
+
+* db.migration name versioning use calver.org
+
