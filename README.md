@@ -1,32 +1,33 @@
 # Aplikasi Invoice Management #
 
-Aplikasi ini dipakai untuk mengelola invoice dan menyambungkan dengan berbagai metode pembayaran masa kini.
-Diantara metode pembayaran yang akan disupport antara lain :
+Aplikasi ini dipakai untuk mengelola invoice dan menyambungkan dengan berbagai metode pembayaran masa kini. Diantara
+metode pembayaran yang akan disupport antara lain :
 
 * Virtual Account Bank
 
-  * Bank BNI
-  * Bank CIMB
-  * Bank BSI
+    * Bank BNI
+    * Bank CIMB
+    * Bank BSI
 
 * e-Wallet
 
-  * Ovo
-  * Gopay
+    * Ovo
+    * Gopay
 
 * QR Payment
 
-  * QRIS
+    * QRIS
 
 Tipe tagihan yang tersedia:
-  * CLOSED: bayar sesuai nominal. kalau tidak sesuai, ditolak
-  * OPEN: pembayaran berapapun diterima
-  * INSTALLMENT: pembayaran diterima selama total akumulasi lebih kecil dengan nilai tagihan
+
+* CLOSED: bayar sesuai nominal. kalau tidak sesuai, ditolak
+* OPEN: pembayaran berapapun diterima
+* INSTALLMENT: pembayaran diterima selama total akumulasi lebih kecil dengan nilai tagihan
 
 # Setup Database #
 
 1. Run postgresql on docker
- 
+
   ```
   docker run --rm \
     --name invoice-db \
@@ -40,10 +41,10 @@ Tipe tagihan yang tersedia:
   ```
 
 2. Dump Query DLL
-   ``` 
-   pg_dump -h 127.0.0.1 -U invoice -s invoicedb
-   ```
 
+  ```
+  pg_dump -h 127.0.0.1 -U invoice -s invoicedb
+  ```
 
 * db.migration name versioning use calver.org
 
