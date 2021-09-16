@@ -34,3 +34,6 @@ build/
 
 ### Database docker ###
 invoicedb-data
+
+### MacOS ###
+.DS_Store
