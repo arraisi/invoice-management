@@ -18,6 +18,10 @@ Diantara metode pembayaran yang akan disupport antara lain :
 
   * QRIS
 
+Tipe tagihan yang tersedia:
+  * CLOSED: bayar sesuai nominal. kalau tidak sesuai, ditolak
+  * OPEN: pembayaran berapapun diterima
+  * INSTALLMENT: pembayaran diterima selama total akumulasi lebih kecil dengan nilai tagihan
 
 # Setup Database #
 
@@ -35,5 +39,12 @@ Diantara metode pembayaran yang akan disupport antara lain :
     postgres:13  
   ```
 
+2. Dump Query DLL
+   ``` 
+   pg_dump -h 127.0.0.1 -U invoice -s invoicedb
+   ```
+
+
 * db.migration name versioning use calver.org
+
 
