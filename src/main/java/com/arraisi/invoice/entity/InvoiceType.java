@@ -1,6 +1,8 @@
 package com.arraisi.invoice.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -11,6 +13,8 @@ import java.util.Set;
 
 @Entity
 @Data
+@SQLDelete(sql = "UPDATE invoice_type SET status_record = 'INACTIVE' WHERE ID=?")
+@Where(clause = "status_record = 'ACTIVE'")
 public class InvoiceType extends BaseEntity {
     @NotNull
     @NotEmpty

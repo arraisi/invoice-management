@@ -1,0 +1,1 @@
+delete from invoicedb.public.invoice_type;
