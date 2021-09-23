@@ -6,6 +6,7 @@ import com.arraisi.invoice.exception.VirtualAccountAlreadyPaidException;
 import com.arraisi.invoice.exception.VirtualAccountNotFoundException;
 import com.arraisi.invoice.repository.VirtualAccountRepository;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 public class VirtualAccountHelper {
@@ -24,5 +25,9 @@ public class VirtualAccountHelper {
         if (va.getInvoice().getPaid()) {
             throw new VirtualAccountAlreadyPaidException("VA [" + companyId + "/" + accountNumber + "-" + provider.getCode() + "] already paid");
         }
+    }
+
+    public static void checkPaymentAmount(VirtualAccount va, BigDecimal amount) {
+
     }
 }

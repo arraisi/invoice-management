@@ -2,7 +2,7 @@ create table running_number
 (
     id          character varying(36)  NOT NULL,
     prefix      character varying(100) NOT NULL,
-    last_number bigint                NOT NULL
+    last_number bigint                 NOT NULL
 );
 
 ALTER TABLE ONLY running_number
@@ -34,11 +34,18 @@ create table invoice_type
     updated       timestamp without time zone,
     updated_by    character varying(255),
     code          character varying(100) NOT NULL,
-    name          character varying(100) NOT NULL
+    name          character varying(100) NOT NULL,
+    payment_type  character varying(100) NOT NULL
 );
 
 ALTER TABLE ONLY invoice_type
     ADD CONSTRAINT invoice_type_pkey PRIMARY KEY (id);
+
+create table invoice_type_configuration
+(
+    id_invoice_type                  character varying(36) NOT NULL,
+    id_virtual_account_configuration character varying(36) NOT NULL
+);
 
 create table invoice
 (
@@ -46,16 +53,18 @@ create table invoice
     created         timestamp without time zone,
     created_by      character varying(255),
     status_record   character varying(255) NOT NULL,
+    payment_status  character varying(255) NOT NULL,
     updated         timestamp without time zone,
     updated_by      character varying(255),
-    amunt           numeric(19, 2)         NOT NULL,
+    amount          numeric(19, 2)         NOT NULL,
+    total_payment   numeric(19, 2)         NOT NULL,
     description     character varying(255) NOT NULL,
     due_date        date                   NOT NULL,
     invoice_number  character varying(100) NOT NULL,
     paid            boolean                NOT NULL,
     id_invoice_type character varying(36),
     id_customer     character varying(36),
-    CONSTRAINT invoice_amount_check CHECK ((amunt >= (0)::numeric))
+    CONSTRAINT invoice_amount_check CHECK ((amount >= (0)::numeric))
 );
 
 ALTER TABLE ONLY invoice
@@ -79,8 +88,7 @@ create table payment_provider
     created_by    character varying(255),
     status_record character varying(255) NOT NULL,
     updated       timestamp without time zone,
-    updated_by    character varying(255),
-    logo          character varying(255)
+    updated_by    character varying(255)
 );
 
 ALTER TABLE ONLY payment_provider

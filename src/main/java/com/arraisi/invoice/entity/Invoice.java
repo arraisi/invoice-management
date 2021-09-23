@@ -4,9 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -47,5 +45,13 @@ public class Invoice extends BaseEntity {
 
     @NotNull
     @Min(0)
-    private BigDecimal amunt;
+    private BigDecimal amount;
+
+    @NotNull
+    @Min(0)
+    private BigDecimal totalPayment;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
 }

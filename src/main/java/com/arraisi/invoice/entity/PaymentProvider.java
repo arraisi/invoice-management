@@ -23,6 +23,4 @@ public class PaymentProvider extends BaseEntity {
     @NotEmpty
     @Size(min = 3, max = 100)
     private String name;
-
-    private String logo;
 }

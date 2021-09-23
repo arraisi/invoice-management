@@ -26,6 +26,11 @@ public class InvoiceType extends BaseEntity {
     @Size(min = 3, max = 100)
     private String name;
 
+    @NotNull
+    @NotEmpty
+    @Size(min = 3, max = 100)
+    private String paymentType;
+
     @ManyToMany
     @JoinTable(
             name = "invoice_type_provider",
